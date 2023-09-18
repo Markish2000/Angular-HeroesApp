@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 // Modules
 import { HeroesRoutingModule } from './heroes-routing.module';
+import { MaterialModule } from '../material/material.module';
 
 // components
 import { HeroPageComponent } from './pages/hero-page/hero-page.component';
@@ -20,6 +21,6 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
     NewPageComponent,
     SearchPageComponent,
   ],
-  imports: [CommonModule, HeroesRoutingModule],
+  imports: [CommonModule, HeroesRoutingModule, MaterialModule],
 })
 export class HeroesModule {}
