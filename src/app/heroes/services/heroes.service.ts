@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 // Libraries
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 // Interfaces
 import { Hero } from '../interfaces/hero.interface';
@@ -18,6 +18,12 @@ export class HeroesService {
   constructor(private http: HttpClient) {}
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(`${this.baseUrl}/heroes`);
+    const url = `${this.baseUrl}/heroes`;
+    return this.http.get<Hero[]>(url);
+  }
+
+  getHeroById(id: string): Observable<Hero | undefined> {
+    const url = `${this.baseUrl}/heroes/${id}`;
+    return this.http.get<Hero>(url).pipe(catchError((error) => of(undefined)));
   }
 }
