@@ -1,5 +1,6 @@
 // Angular
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // Libraries
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,10 +18,16 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    AppRoutingModule,
+    // Modules
+    SharedModule,
+
+    // Libraries
     BrowserAnimationsModule,
     BrowserModule,
-    SharedModule,
+
+    // Routes
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
