@@ -1,18 +1,15 @@
-// Angular Core
+// Angular
 import { Component, OnInit } from '@angular/core';
 
-// Angular Router
 import { ActivatedRoute, Router } from '@angular/router';
 
-// Angular Forms
 import { FormControl, FormGroup } from '@angular/forms';
 
-// Angular Material
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Libraries
-import { filter, tap, switchMap } from 'rxjs';
+import { filter, switchMap } from 'rxjs';
 
 // Components
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
@@ -90,7 +87,7 @@ export class NewPageComponent implements OnInit {
   }
 
   onDeleteHero() {
-    if (!this.currentHero.id) throw new Error('Hero id is required');
+    if (!this.currentHero.id) throw new Error('El id del héroe es requerido');
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: this.heroForm.value,

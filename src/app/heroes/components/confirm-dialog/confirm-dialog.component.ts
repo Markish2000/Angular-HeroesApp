@@ -1,7 +1,6 @@
-// Angular Core
+// Angular
 import { Component, Inject } from '@angular/core';
 
-// Angular Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // Interfaces
