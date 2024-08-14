@@ -1,7 +1,5 @@
-// Angular
 import { Component, Input, OnInit } from '@angular/core';
 
-// Interfaces
 import { Hero } from '../../interfaces/hero.interface';
 
 @Component({

@@ -1,4 +1,3 @@
-// Angular
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,16 +7,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// Libraries
 import { filter, switchMap } from 'rxjs';
 
-// Components
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
-// Services
 import { HeroesService } from '../../services/heroes.service';
 
-// Interfaces
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 
 @Component({
@@ -66,11 +61,11 @@ export class NewPageComponent implements OnInit {
       });
   }
 
-  showSnackbar(message: string): void {
+  private showSnackbar(message: string): void {
     this.snackbar.open(message, 'Hecho', { duration: 2500 });
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     if (this.heroForm.invalid) return;
 
     if (this.currentHero.id) {
@@ -86,7 +81,7 @@ export class NewPageComponent implements OnInit {
     });
   }
 
-  onDeleteHero() {
+  public onDeleteHero(): void {
     if (!this.currentHero.id) throw new Error('El id del héroe es requerido');
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {

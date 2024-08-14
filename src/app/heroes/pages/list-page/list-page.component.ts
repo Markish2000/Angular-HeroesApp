@@ -1,10 +1,7 @@
-// Angular
 import { Component, OnInit } from '@angular/core';
 
-// Services
 import { HeroesService } from '../../services/heroes.service';
 
-// Interfaces
 import { Hero } from '../../interfaces/hero.interface';
 
 @Component({

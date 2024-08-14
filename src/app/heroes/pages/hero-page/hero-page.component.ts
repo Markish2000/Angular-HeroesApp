@@ -1,14 +1,10 @@
-// Angular
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-// Libraries
-import { switchMap } from 'rxjs';
+import { catchError, of, switchMap } from 'rxjs';
 
-// Services
 import { HeroesService } from '../../services/heroes.service';
 
-// Interfaces
 import { Hero } from '../../interfaces/hero.interface';
 
 @Component({
@@ -26,16 +22,25 @@ export class HeroPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params
-      .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
-      .subscribe((hero) => {
-        if (!hero) return this.router.navigate(['/heroes/list']);
+      .pipe(
+        switchMap(({ id }) => this.heroesService.getHeroById(id)),
+        catchError(() => {
+          const url = '/heroes/list';
+          this.router.navigate([url]);
 
-        this.hero = hero;
-        return;
+          return of(null);
+        })
+      )
+      .subscribe((hero) => {
+        if (hero) {
+          this.hero = hero;
+        }
       });
   }
 
-  goBack(): void {
-    this.router.navigateByUrl('heroes/list');
+  public goBack(): void {
+    const url = 'heroes/list';
+
+    this.router.navigateByUrl(url);
   }
 }

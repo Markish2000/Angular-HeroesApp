@@ -1,14 +1,10 @@
-// Angular
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-// Libraries
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
-// Interfaces
 import { Hero } from '../../interfaces/hero.interface';
 
-// Services
 import { HeroesService } from '../../services/heroes.service';
 
 @Component({
@@ -22,14 +18,15 @@ export class SearchPageComponent {
 
   constructor(private heroesService: HeroesService) {}
 
-  searchHero() {
-    const value: string = this.searchInput.value || '';
+  public searchHero(): void {
+    const value: string = this.searchInput.value ?? '';
+
     this.heroesService
       .getSuggestions(value)
       .subscribe((heroes) => (this.heroes = heroes));
   }
 
-  onSelectedOption(event: MatAutocompleteSelectedEvent): void {
+  public onSelectedOption(event: MatAutocompleteSelectedEvent): void {
     if (!event.option.value) {
       this.selectedHero = undefined;
       return;

@@ -1,14 +1,10 @@
-// Angular
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// Libraries
 import { Observable, tap, of, map, catchError } from 'rxjs';
 
-// Interfaces
 import { User } from '../interfaces/user.interface';
 
-// Environments
 import { environments } from 'src/environments/environments';
 
 @Injectable({ providedIn: 'root' })
@@ -23,7 +19,7 @@ export class AuthService {
     return structuredClone(this.user);
   }
 
-  login(email: string, password: string): Observable<User> {
+  public login(email: string, password: string): Observable<User> {
     const url = `${this.baseUrl}/users/1`;
     return this.http.get<User>(url).pipe(
       tap((user) => (this.user = user)),
@@ -33,7 +29,7 @@ export class AuthService {
     );
   }
 
-  checkAuthentication(): Observable<boolean> {
+  public checkAuthentication(): Observable<boolean> {
     if (!localStorage.getItem('token')) return of(false);
 
     const token = localStorage.getItem('token');
@@ -46,7 +42,7 @@ export class AuthService {
     );
   }
 
-  logout() {
+  public logout(): void {
     this.user = undefined;
     localStorage.clear();
   }

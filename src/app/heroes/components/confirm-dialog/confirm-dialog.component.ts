@@ -1,9 +1,7 @@
-// Angular
 import { Component, Inject } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-// Interfaces
 import { Hero } from '../../interfaces/hero.interface';
 
 @Component({
@@ -16,11 +14,11 @@ export class ConfirmDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Hero
   ) {}
 
-  onNoClick(): void {
+  public onNoClick(): void {
     this.dialogRef.close(false);
   }
 
-  onConfirm(): void {
+  public onConfirm(): void {
     this.dialogRef.close(true);
   }
 }

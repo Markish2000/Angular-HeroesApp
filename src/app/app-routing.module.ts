@@ -1,11 +1,8 @@
-// Angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Components
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
 
-// Guards
 import { AuthGuard } from './auth/guards/auth.guard';
 import { PublicGuard } from './auth/guards/public.guard';
 

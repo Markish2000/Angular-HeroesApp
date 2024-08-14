@@ -1,11 +1,8 @@
-// Angular
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-// Services
 import { AuthService } from 'src/app/auth/services/auth.service';
 
-// Interfaces
 import { User } from 'src/app/auth/interfaces/user.interface';
 
 @Component({
@@ -37,8 +34,10 @@ export class LayoutPageComponent {
     return this.authService.currentUser;
   }
 
-  onLogout() {
+  public onLogout(): void {
     this.authService.logout();
-    this.router.navigate(['/auth/login']);
+
+    const url: string = '/auth/login';
+    this.router.navigate([url]);
   }
 }
